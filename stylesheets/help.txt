@@ -1,0 +1,84 @@
+Settings: configurações (variáveis: fontes, cores, espaçamentos, breakpoints)
+	ex: 
+		$app-red = #F02512
+		$app-blue = #4626F9
+		$card-border = solid 3px yellow
+		$spacing-unit = 3px
+		$device-small = 600px
+		$device-medium = 900px
+		$device-large = 1200px
+		$device-small-max = $device-medium - 1
+		$device-medium-max = $device-large - 1
+
+Tools: funções de estilos { retorna um estilo definido } - @keyframes (animations)
+	ex: brand(color) {
+		font-size 15px
+		color color
+	}
+
+	.minha-classe
+		brand(blue)
+		...mais configs
+
+	fadeIn(t) {
+		animation fade
+	}
+
+Generics: resets de css (grid, botão sem outline, estilo de headers, input sem outline, margins e paddings default etc.)
+	ex:
+		p
+			font-size 10px
+			padding 2px
+
+		input
+			boder solid 1px black
+			&:focus
+				border-color blue
+
+		html 
+			font-size 14px
+			media (min-width $device-small-max)
+				font-size 16px
+
+Elements**: pequenos elementos do app (botões, estilo de parágrafos, inputs, labels etc.)
+ex:
+	.image-responsive
+		background-position center center
+		background-size cover
+
+	.success-button
+		background-color green
+
+Components (objects)*: conjunto de elementos (formgroup, card, lista etc.)
+	ex:
+		.card
+			background-color white
+			padding 5 * $spacing-unit
+			border $card-border
+			> .image
+				extends .image-responsive
+				background-image url('minha_imagem')
+			> .action
+				extends .success-button
+				display block
+				width 100%
+
+			&--inverse
+				background-color black    //
+				color #FFF		            //aplica essas configurações SOBRE as confs originais da classe .card
+
+Containers (components): estilos específicos de cada container
+
+Trumps: classes helpers de css 
+!__(ÚNICO lugar onde é válido usar !important, mas se estiver tudo certo não é necessário)__!
+	ex:
+		.ta-left
+			text-align left
+
+		.dn
+			display none
+
+* = nível de padronização
+
+https://willianjusten.com.br/organizando-seu-css-com-itcss/
+http://www.frontendbrasil.com.br/tutoriais/atomic-design-como-funciona/

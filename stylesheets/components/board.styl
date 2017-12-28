@@ -1,0 +1,30 @@
+$dimen = 70px
+
+.board
+  height 8 * $dimen
+  width 8 * $dimen
+  .chess-row
+    display block
+    height $dimen
+    width 8 * $dimen
+    .chess-tile
+      position relative
+      display inline-block
+      height $dimen
+      width $dimen
+      background-position center
+      background-size contain
+      &.-black
+        background-color #203d1f
+
+      &.-white
+        background-color #b6d9b4
+
+      .selected-filter
+        position absolute
+        left 0;
+        top 0;
+        right 0;
+        bottom 0;
+        background-color yellow
+        opacity 0.2
